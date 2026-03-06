@@ -1,0 +1,6 @@
+preview:
+  type: process
+  start_command: npx -y serve docs -l 3000
+  port: 3000
+  health_check: /
+  startup_timeout: 15
