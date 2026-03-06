@@ -14,5 +14,8 @@
     "project-management"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "html5": "^1.0.5"
+  }
 }
