@@ -355,14 +355,14 @@
                 <tr>
                   <th class="col-check"><input type="checkbox" aria-label="Select all projects"></th>
                   <th class="col-indicator"><span class="sr-only">Status indicator</span></th>
-                  <th><a href="#">Project Name ▼</a></th>
-                  <th><a href="#">Owner</a></th>
-                  <th class="col-dates"><a href="#">Start Date</a></th>
-                  <th class="col-dates"><a href="#">Finish Date</a></th>
-                  <th><a href="#">% Complete</a></th>
-                  <th><a href="#">Status</a></th>
-                  <th class="col-budget"><a href="#">Budget</a></th>
-                  <th class="col-gantt th-gantt"><a href="#">Gantt</a></th>
+                  <th class="sort-asc"><button class="sort-btn" type="button" aria-sort="ascending">Project Name</button></th>
+                  <th><button class="sort-btn" type="button" aria-sort="none">Owner</button></th>
+                  <th class="col-dates"><button class="sort-btn" type="button" aria-sort="none">Start Date</button></th>
+                  <th class="col-dates"><button class="sort-btn" type="button" aria-sort="none">Finish Date</button></th>
+                  <th><button class="sort-btn" type="button" aria-sort="none">% Complete</button></th>
+                  <th><button class="sort-btn" type="button" aria-sort="none">Status</button></th>
+                  <th class="col-budget"><button class="sort-btn" type="button" aria-sort="none">Budget</button></th>
+                  <th class="col-gantt th-gantt"><span>Timeline</span></th>
                 </tr>
               </thead>
               <tbody>
@@ -573,83 +573,95 @@
             <table class="data-table" aria-label="Resource allocation">
               <thead>
                 <tr>
-                  <th>Resource</th>
-                  <th>Department</th>
-                  <th>Allocated Hours</th>
-                  <th>Available Hours</th>
-                  <th>Utilization</th>
+                  <th class="sort-asc"><button class="sort-btn" type="button" aria-sort="ascending">Resource</button></th>
+                  <th><button class="sort-btn" type="button" aria-sort="none">Department</button></th>
+                  <th><button class="sort-btn" type="button" aria-sort="none">Allocated Hours</button></th>
+                  <th><button class="sort-btn" type="button" aria-sort="none">Available Hours</button></th>
+                  <th><button class="sort-btn" type="button" aria-sort="none">Utilization</button></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="owner-text">E. Wiberg</td>
-                  <td class="date-text">Engineering</td>
-                  <td>148</td>
-                  <td>160</td>
+                  <td><span class="project-link">E. Wiberg</span></td>
+                  <td class="owner-text">Engineering</td>
+                  <td class="col-budget">148 h</td>
+                  <td class="col-budget">160 h</td>
                   <td>
-                    <div class="util-bar-wrap">
-                      <div class="util-bar"><div class="util-bar-fill fill-high" style="width:93%"></div></div>
-                      <span class="util-text util-high">93%</span>
+                    <div class="util-row">
+                      <div class="util-bar-wrap">
+                        <div class="util-bar"><div class="util-bar-fill fill-high" style="width:93%"></div></div>
+                      </div>
+                      <span class="badge badge-warning"><span class="badge-dot" aria-hidden="true"></span>93% — High</span>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td class="owner-text">K. Jensen</td>
-                  <td class="date-text">Engineering</td>
-                  <td>120</td>
-                  <td>160</td>
+                  <td><span class="project-link">K. Jensen</span></td>
+                  <td class="owner-text">Engineering</td>
+                  <td class="col-budget">120 h</td>
+                  <td class="col-budget">160 h</td>
                   <td>
-                    <div class="util-bar-wrap">
-                      <div class="util-bar"><div class="util-bar-fill fill-med" style="width:75%"></div></div>
-                      <span class="util-text util-med">75%</span>
+                    <div class="util-row">
+                      <div class="util-bar-wrap">
+                        <div class="util-bar"><div class="util-bar-fill fill-med" style="width:75%"></div></div>
+                      </div>
+                      <span class="badge badge-success"><span class="badge-dot" aria-hidden="true"></span>75% — Normal</span>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td class="owner-text">M. Andersen</td>
-                  <td class="date-text">Design</td>
-                  <td>155</td>
-                  <td>160</td>
+                  <td><span class="project-link">M. Andersen</span></td>
+                  <td class="owner-text">Design</td>
+                  <td class="col-budget">155 h</td>
+                  <td class="col-budget">160 h</td>
                   <td>
-                    <div class="util-bar-wrap">
-                      <div class="util-bar"><div class="util-bar-fill fill-over" style="width:97%"></div></div>
-                      <span class="util-text util-over">97%</span>
+                    <div class="util-row">
+                      <div class="util-bar-wrap">
+                        <div class="util-bar"><div class="util-bar-fill fill-over" style="width:97%"></div></div>
+                      </div>
+                      <span class="badge badge-danger"><span class="badge-dot" aria-hidden="true"></span>97% — Over</span>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td class="owner-text">S. Larsen</td>
-                  <td class="date-text">Data</td>
-                  <td>136</td>
-                  <td>160</td>
+                  <td><span class="project-link">S. Larsen</span></td>
+                  <td class="owner-text">Data</td>
+                  <td class="col-budget">136 h</td>
+                  <td class="col-budget">160 h</td>
                   <td>
-                    <div class="util-bar-wrap">
-                      <div class="util-bar"><div class="util-bar-fill fill-high" style="width:85%"></div></div>
-                      <span class="util-text util-high">85%</span>
+                    <div class="util-row">
+                      <div class="util-bar-wrap">
+                        <div class="util-bar"><div class="util-bar-fill fill-high" style="width:85%"></div></div>
+                      </div>
+                      <span class="badge badge-warning"><span class="badge-dot" aria-hidden="true"></span>85% — High</span>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td class="owner-text">P. Nielsen</td>
-                  <td class="date-text">Engineering</td>
-                  <td>160</td>
-                  <td>160</td>
+                  <td><span class="project-link">P. Nielsen</span></td>
+                  <td class="owner-text">Engineering</td>
+                  <td class="col-budget">160 h</td>
+                  <td class="col-budget">160 h</td>
                   <td>
-                    <div class="util-bar-wrap">
-                      <div class="util-bar"><div class="util-bar-fill fill-over" style="width:100%"></div></div>
-                      <span class="util-text util-over">100%</span>
+                    <div class="util-row">
+                      <div class="util-bar-wrap">
+                        <div class="util-bar"><div class="util-bar-fill fill-over" style="width:100%"></div></div>
+                      </div>
+                      <span class="badge badge-danger"><span class="badge-dot" aria-hidden="true"></span>100% — Over</span>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td class="owner-text">T. Holm</td>
-                  <td class="date-text">DevOps</td>
-                  <td>112</td>
-                  <td>160</td>
+                  <td><span class="project-link">T. Holm</span></td>
+                  <td class="owner-text">DevOps</td>
+                  <td class="col-budget">112 h</td>
+                  <td class="col-budget">160 h</td>
                   <td>
-                    <div class="util-bar-wrap">
-                      <div class="util-bar"><div class="util-bar-fill fill-med" style="width:70%"></div></div>
-                      <span class="util-text util-med">70%</span>
+                    <div class="util-row">
+                      <div class="util-bar-wrap">
+                        <div class="util-bar"><div class="util-bar-fill fill-med" style="width:70%"></div></div>
+                      </div>
+                      <span class="badge badge-success"><span class="badge-dot" aria-hidden="true"></span>70% — Normal</span>
                     </div>
                   </td>
                 </tr>
