@@ -341,7 +341,8 @@ img {
   scrollbar-width: thin;
   scrollbar-color: var(--color-sidebar-bg-hover) transparent;
   z-index: 200;
-  transition: transform var(--transition-slow);
+  /* Sidebar slide transition: 200ms matches the ≤200ms requirement */
+  transition: transform 200ms ease;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -1384,12 +1385,16 @@ img {
     top: 0;
     left: 0;
     height: 100vh;
-    width: var(--sidebar-width);
+    /* Use a fixed 260px width for mobile drawer so it doesn't exceed the viewport */
+    width: min(260px, 80vw);
     transform: translateX(-100%);
     z-index: 300;
+    /* Ensure 200ms transition for the open/close animation */
+    transition: transform 200ms ease, box-shadow 200ms ease;
   }
   .sidebar.is-open {
     transform: translateX(0);
+    box-shadow: 4px 0 32px rgba(0, 0, 0, 0.35);
   }
 
   /* Show overlay when sidebar is open */
@@ -1521,4 +1526,140 @@ img {
 .font-mono {
   font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
   font-variant-numeric: tabular-nums;
+}
+
+/* ── Skip Link (accessibility — first focusable element) ─────── */
+.skip-link {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 9999;
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  box-shadow: var(--shadow-lg);
+  /* Hidden off-screen until focused */
+  transform: translateY(-120%);
+  transition: transform var(--transition-fast);
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid var(--color-text-inverse);
+  outline-offset: 2px;
+}
+
+/* ── Global :focus-visible styles (keyboard users only) ──────── */
+/*
+   We rely on :focus-visible so mouse users don't see outlines,
+   but keyboard users always do. The individual component rules
+   below override or augment these base styles as needed.
+*/
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Remove default focus ring in favour of :focus-visible */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Sidebar links — need a lighter focus ring against dark background */
+.sidebar-link:focus-visible,
+.sidebar-footer-link:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Sort buttons inside table headers */
+.sort-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Pagination buttons */
+.pagination-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* User menu (role=button) */
+.user-menu:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+}
+
+/* Checkbox focus */
+input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Page-footer links */
+.page-footer-links a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Topbar icon buttons */
+.topbar-icon-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+}
+
+/* Hamburger button */
+.hamburger:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Ghost / inline buttons in topbar */
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+}
+
+/* ── prefers-reduced-motion: strip animations/transitions ────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Skip-link: still needs to be reachable, just without animation */
+  .skip-link {
+    transform: none;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 1px;
+  }
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    clip: auto;
+    clip-path: none;
+    height: auto;
+    overflow: visible;
+    white-space: normal;
+    width: auto;
+    transform: none;
+  }
 }
