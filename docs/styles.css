@@ -613,9 +613,23 @@ img {
 /* ── Metric Cards (KPI Summary) ──────────────────────────────── */
 .metric-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
   margin-bottom: var(--space-8);
+}
+
+/* Wide screens: show all 5 cards in a row with auto layout */
+@media (min-width: 1280px) {
+  .metric-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Medium desktops / large tablets: 3 columns */
+@media (max-width: 1279px) and (min-width: 769px) {
+  .metric-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .metric-card {
@@ -629,9 +643,27 @@ img {
   overflow: hidden;
 }
 .metric-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
+
+/* Subtle background glow matching accent color */
+.metric-card::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  opacity: 0.06;
+  pointer-events: none;
+}
+.metric-card.accent-blue::after   { background: var(--color-accent); }
+.metric-card.accent-green::after  { background: var(--color-success); }
+.metric-card.accent-amber::after  { background: var(--color-warning); }
+.metric-card.accent-red::after    { background: var(--color-danger); }
+.metric-card.accent-purple::after { background: #8b5cf6; }
 
 .metric-card-accent-bar {
   position: absolute;
@@ -641,47 +673,106 @@ img {
   height: 3px;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
-.metric-card-accent-bar.accent-blue   { background: var(--color-accent); }
-.metric-card-accent-bar.accent-green  { background: var(--color-success); }
-.metric-card-accent-bar.accent-amber  { background: var(--color-warning); }
-.metric-card-accent-bar.accent-red    { background: var(--color-danger); }
-.metric-card-accent-bar.accent-purple { background: #8b5cf6; }
+.metric-card-accent-bar.accent-blue   { background: linear-gradient(90deg, var(--color-accent), #818cf8); }
+.metric-card-accent-bar.accent-green  { background: linear-gradient(90deg, var(--color-success), #34d399); }
+.metric-card-accent-bar.accent-amber  { background: linear-gradient(90deg, var(--color-warning), #fbbf24); }
+.metric-card-accent-bar.accent-red    { background: linear-gradient(90deg, var(--color-danger), #f87171); }
+.metric-card-accent-bar.accent-purple { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
 
 .metric-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 .metric-label {
   font-size: var(--text-xs);
   font-weight: var(--font-semibold);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   color: var(--color-text-muted);
-}
-.metric-icon {
-  font-size: var(--text-lg);
-  opacity: 0.7;
+  line-height: var(--leading-tight);
 }
 
+/* Icon container — pill-shaped background chip */
+.metric-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.metric-icon.icon-blue   { background-color: var(--color-accent-light); }
+.metric-icon.icon-green  { background-color: var(--color-success-bg); }
+.metric-icon.icon-amber  { background-color: var(--color-warning-bg); }
+.metric-icon.icon-red    { background-color: var(--color-danger-bg); }
+.metric-icon.icon-purple { background-color: #f5f3ff; }
+
 .metric-value {
-  font-size: var(--text-3xl);
+  font-size: var(--text-4xl);
   font-weight: var(--font-bold);
   color: var(--color-text-primary);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   line-height: 1;
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--space-2);
 }
 .metric-value.value-green  { color: var(--color-success); }
 .metric-value.value-amber  { color: var(--color-warning); }
 .metric-value.value-red    { color: var(--color-danger); }
-.metric-value.value-purple { color: #8b5cf6; }
+.metric-value.value-purple { color: #7c3aed; }
 
+.metric-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
 .metric-delta {
   font-size: var(--text-xs);
   color: var(--color-text-muted);
-  margin-top: var(--space-1);
+  line-height: var(--leading-tight);
+}
+
+/* Status badge inside metric card footer */
+.metric-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: var(--font-semibold);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.metric-status-badge.sb-green {
+  background-color: var(--color-success-bg);
+  color: var(--color-success-text);
+  border: 1px solid var(--color-success-border);
+}
+.metric-status-badge.sb-amber {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning-text);
+  border: 1px solid var(--color-warning-border);
+}
+.metric-status-badge.sb-red {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger-text);
+  border: 1px solid var(--color-danger-border);
+}
+.metric-status-badge.sb-blue {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent-hover);
+  border: 1px solid var(--color-accent-border);
+}
+.metric-status-badge.sb-purple {
+  background-color: #f5f3ff;
+  color: #7c3aed;
+  border: 1px solid #ddd6fe;
 }
 
 /* ── Section Card ────────────────────────────────────────────── */
@@ -1088,9 +1179,7 @@ img {
   .main-content {
     padding: var(--space-6);
   }
-  .metric-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  }
+  /* metric-grid is already 3 columns — keep it */
   .user-info {
     display: none;
   }
@@ -1145,7 +1234,7 @@ img {
     gap: var(--space-3);
   }
   .metric-value {
-    font-size: var(--text-2xl);
+    font-size: var(--text-3xl);
   }
 
   /* Hide gantt column on mobile */
@@ -1185,17 +1274,22 @@ img {
   }
 }
 
-/* ─ Small mobile (≤480px) ────────────────────────────────────── */
+/* ─ Small mobile (≤480px) — single column ────────────────────── */
 @media (max-width: 480px) {
   .metric-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-2);
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
   }
   .metric-card {
-    padding: var(--space-4);
+    padding: var(--space-4) var(--space-5);
   }
   .metric-value {
-    font-size: var(--text-xl);
+    font-size: var(--text-3xl);
+  }
+  .metric-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
   }
   .main-content {
     padding: var(--space-3);
