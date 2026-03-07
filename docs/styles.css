@@ -26,7 +26,7 @@ a:hover {
 
 /* ── Top bar ─────────────────────────────────────────────────── */
 .topbar {
-  background: linear-gradient(to bottom, #003a7a, #002255);
+  background: #28a745;
   color: #fff;
   padding: 6px 10px;
   border-bottom: 2px solid #f0c040;
