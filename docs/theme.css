@@ -91,4 +91,11 @@
   /* -- Transitions -------------------------------------------- */
   --transition-fast:        150ms ease;
   --transition-base:        250ms ease;
+
+  /* -- Focus Ring --------------------------------------------- */
+  --focus-ring:             0 0 0 3px rgba(74, 158, 218, 0.45);
+  --focus-ring-offset:      2px;
+
+  /* -- Avatar border ------------------------------------------ */
+  --avatar-border:          rgba(255, 255, 255, 0.15);
 }
