@@ -3,359 +3,294 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contoso Ltd - Project Server 2005</title>
+  <title>Contoso Ltd — Project Dashboard</title>
+  <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Top bar -->
-  <div class="topbar">
-    <table width="100%" cellpadding="0" cellspacing="0">
-      <tr>
-        <td class="topbar-left">
-          <img src="logo.gif" alt="Contoso" class="logo-img">
-          <span class="topbar-title">Contoso Ltd &mdash; Project Server</span>
-        </td>
-        <td class="topbar-right">
-          Logged in as: <b>CONTOSO\ewiberg</b> | <a href="#">My Settings</a> | <a href="#">Sign Out</a>
-        </td>
-      </tr>
-    </table>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="header">
+    <div class="header-brand">
+      <span class="header-logo">C</span>
+      <span class="header-title">Contoso</span>
+      <span class="header-subtitle">Project Dashboard</span>
+    </div>
+    <div class="header-actions">
+      <span class="header-user">Esben Wiberg</span>
+      <span class="header-avatar">EW</span>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       LAYOUT (sidebar + main content)
+       ============================================================ -->
+  <div class="layout">
+
+    <!-- ========================================================
+         SIDEBAR
+         ======================================================== -->
+    <aside class="sidebar">
+      <nav>
+        <div class="sidebar-section-label">Main</div>
+        <a href="#" class="sidebar-link active">Dashboard</a>
+        <a href="#" class="sidebar-link">Projects</a>
+        <a href="#" class="sidebar-link">Resources</a>
+        <a href="#" class="sidebar-link">Timeline</a>
+
+        <div class="sidebar-section-label">Reports</div>
+        <a href="#" class="sidebar-link">Analytics</a>
+        <a href="#" class="sidebar-link">Budget</a>
+
+        <div class="sidebar-section-label">Settings</div>
+        <a href="#" class="sidebar-link">Configuration</a>
+      </nav>
+    </aside>
+
+    <!-- ========================================================
+         MAIN CONTENT
+         ======================================================== -->
+    <main class="main">
+
+      <!-- Page header -->
+      <div class="page-header">
+        <h1 class="page-title">Project Dashboard</h1>
+        <p class="page-subtitle">Q1 2026 Overview — Contoso Engineering</p>
+      </div>
+
+      <!-- ==================================================
+           STATS CARDS
+           ================================================== -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Projects</div>
+          <div class="stat-value">8</div>
+          <div class="stat-trend">Across all teams</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">On Track</div>
+          <div class="stat-value stat-success">5</div>
+          <div class="stat-trend">+2 from last quarter</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">At Risk</div>
+          <div class="stat-value stat-warning">2</div>
+          <div class="stat-trend">-1 from last quarter</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Overdue</div>
+          <div class="stat-value stat-danger">1</div>
+          <div class="stat-trend">Needs attention</div>
+        </div>
+      </section>
+
+      <!-- ==================================================
+           ACTIVE PROJECTS TABLE
+           ================================================== -->
+      <section class="card">
+        <div class="card-header">
+          <h2 class="card-title">Active Projects</h2>
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Owner</th>
+                <th>Status</th>
+                <th>Progress</th>
+                <th>Budget</th>
+                <th>Deadline</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#" class="project-name">Platform Modernization</a></td>
+                <td>E. Wiberg</td>
+                <td><span class="badge badge-success">On Track</span></td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar"><div class="progress-fill fill-success" style="width: 72%"></div></div>
+                    <span class="progress-text">72%</span>
+                  </div>
+                </td>
+                <td class="col-right">$245,000</td>
+                <td>Mar 28, 2026</td>
+              </tr>
+              <tr>
+                <td><a href="#" class="project-name">API Gateway Migration</a></td>
+                <td>K. Jensen</td>
+                <td><span class="badge badge-info">Complete</span></td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+                    <span class="progress-text">100%</span>
+                  </div>
+                </td>
+                <td class="col-right">$89,000</td>
+                <td>Feb 28, 2026</td>
+              </tr>
+              <tr>
+                <td><a href="#" class="project-name">Customer Portal Redesign</a></td>
+                <td>M. Andersen</td>
+                <td><span class="badge badge-warning">At Risk</span></td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar"><div class="progress-fill fill-warning" style="width: 45%"></div></div>
+                    <span class="progress-text">45%</span>
+                  </div>
+                </td>
+                <td class="col-right">$178,000</td>
+                <td>Mar 15, 2026</td>
+              </tr>
+              <tr>
+                <td><a href="#" class="project-name">Data Warehouse Pipeline</a></td>
+                <td>S. Larsen</td>
+                <td><span class="badge badge-success">On Track</span></td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar"><div class="progress-fill fill-success" style="width: 30%"></div></div>
+                    <span class="progress-text">30%</span>
+                  </div>
+                </td>
+                <td class="col-right">$156,000</td>
+                <td>Apr 10, 2026</td>
+              </tr>
+              <tr>
+                <td><a href="#" class="project-name">Legacy CRM Migration</a></td>
+                <td>P. Nielsen</td>
+                <td><span class="badge badge-danger">Overdue</span></td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar"><div class="progress-fill fill-danger" style="width: 58%"></div></div>
+                    <span class="progress-text">58%</span>
+                  </div>
+                </td>
+                <td class="col-right">$320,000</td>
+                <td>Feb 14, 2026</td>
+              </tr>
+              <tr>
+                <td><a href="#" class="project-name">CI/CD Pipeline Overhaul</a></td>
+                <td>T. Holm</td>
+                <td><span class="badge badge-success">On Track</span></td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar"><div class="progress-fill fill-success" style="width: 88%"></div></div>
+                    <span class="progress-text">88%</span>
+                  </div>
+                </td>
+                <td class="col-right">$67,000</td>
+                <td>Mar 6, 2026</td>
+              </tr>
+              <tr>
+                <td><a href="#" class="project-name">Mobile App v3.0</a></td>
+                <td>L. Poulsen</td>
+                <td><span class="badge badge-warning">At Risk</span></td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar"><div class="progress-fill fill-warning" style="width: 15%"></div></div>
+                    <span class="progress-text">15%</span>
+                  </div>
+                </td>
+                <td class="col-right">$410,000</td>
+                <td>May 22, 2026</td>
+              </tr>
+              <tr>
+                <td><a href="#" class="project-name">Security Audit &amp; Compliance</a></td>
+                <td>A. Krogh</td>
+                <td><span class="badge badge-success">On Track</span></td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar"><div class="progress-fill fill-success" style="width: 95%"></div></div>
+                    <span class="progress-text">95%</span>
+                  </div>
+                </td>
+                <td class="col-right">$52,000</td>
+                <td>Feb 21, 2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================================================
+           TEAM MEMBERS TABLE
+           ================================================== -->
+      <section class="card">
+        <div class="card-header">
+          <h2 class="card-title">Team Members</h2>
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Department</th>
+                <th>Utilization</th>
+                <th class="col-center">Active Projects</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>E. Wiberg</td>
+                <td>Lead Engineer</td>
+                <td>Engineering</td>
+                <td><span class="util-high">93%</span></td>
+                <td class="col-center">2</td>
+              </tr>
+              <tr>
+                <td>K. Jensen</td>
+                <td>Backend Developer</td>
+                <td>Engineering</td>
+                <td><span class="util-ok">75%</span></td>
+                <td class="col-center">1</td>
+              </tr>
+              <tr>
+                <td>M. Andersen</td>
+                <td>UX Designer</td>
+                <td>Design</td>
+                <td><span class="util-over">97%</span></td>
+                <td class="col-center">2</td>
+              </tr>
+              <tr>
+                <td>S. Larsen</td>
+                <td>Data Engineer</td>
+                <td>Data</td>
+                <td><span class="util-high">85%</span></td>
+                <td class="col-center">1</td>
+              </tr>
+              <tr>
+                <td>P. Nielsen</td>
+                <td>Senior Developer</td>
+                <td>Engineering</td>
+                <td><span class="util-over">100%</span></td>
+                <td class="col-center">1</td>
+              </tr>
+              <tr>
+                <td>T. Holm</td>
+                <td>DevOps Engineer</td>
+                <td>DevOps</td>
+                <td><span class="util-ok">70%</span></td>
+                <td class="col-center">1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================================================
+           FOOTER
+           ================================================== -->
+      <footer class="page-footer">
+        <span>Contoso Ltd — Internal Dashboard</span>
+        <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Contact</a></span>
+      </footer>
+
+    </main>
   </div>
 
-  <!-- Navigation bar -->
-  <div class="navbar">
-    <table cellpadding="0" cellspacing="0">
-      <tr>
-        <td class="nav-item nav-active">Project Center</td>
-        <td class="nav-item">Resource Center</td>
-        <td class="nav-item">Status Reports</td>
-        <td class="nav-item">Documents</td>
-        <td class="nav-item">Issues &amp; Risks</td>
-        <td class="nav-item">Admin</td>
-      </tr>
-    </table>
-  </div>
-
-  <!-- Toolbar -->
-  <div class="toolbar">
-    <table cellpadding="0" cellspacing="0">
-      <tr>
-        <td class="toolbar-btn">[<u>N</u>ew Project]</td>
-        <td class="toolbar-btn">[<u>E</u>dit]</td>
-        <td class="toolbar-btn">[<u>D</u>elete]</td>
-        <td class="toolbar-sep">|</td>
-        <td class="toolbar-btn">[<u>R</u>efresh]</td>
-        <td class="toolbar-btn">[<u>P</u>rint View]</td>
-        <td class="toolbar-sep">|</td>
-        <td class="toolbar-btn">[Export to <u>E</u>xcel]</td>
-        <td class="toolbar-btn">[<u>F</u>ilter: All Projects &#9660;]</td>
-      </tr>
-    </table>
-  </div>
-
-  <!-- Main content area -->
-  <table class="main-layout" cellpadding="0" cellspacing="0">
-    <tr>
-      <!-- Sidebar -->
-      <td class="sidebar">
-        <div class="sidebar-header">Quick Launch</div>
-        <div class="sidebar-section">
-          <div class="sidebar-section-title">Views</div>
-          <a href="#" class="sidebar-link">&#9658; Summary</a>
-          <a href="#" class="sidebar-link">&#9658; Gantt Chart</a>
-          <a href="#" class="sidebar-link">&#9658; Resource Usage</a>
-          <a href="#" class="sidebar-link">&#9658; Cost Tracking</a>
-        </div>
-        <div class="sidebar-section">
-          <div class="sidebar-section-title">My Work</div>
-          <a href="#" class="sidebar-link">&#9658; My Tasks</a>
-          <a href="#" class="sidebar-link">&#9658; My Timesheets</a>
-          <a href="#" class="sidebar-link">&#9658; Status Reports</a>
-        </div>
-        <div class="sidebar-section">
-          <div class="sidebar-section-title">Reports</div>
-          <a href="#" class="sidebar-link">&#9658; Dashboard</a>
-          <a href="#" class="sidebar-link">&#9658; Portfolio Analysis</a>
-          <a href="#" class="sidebar-link">&#9658; Resource Availability</a>
-        </div>
-        <hr class="sidebar-hr">
-        <div class="sidebar-footer">
-          <img src="recycle.gif" alt="" class="icon-tiny"> <a href="#">Recycle Bin</a>
-        </div>
-      </td>
-
-      <!-- Content -->
-      <td class="content">
-        <h2 class="page-title">
-          <img src="folder.gif" alt="" class="icon-small"> Project Center &mdash; All Projects
-        </h2>
-        <p class="breadcrumb">Home &gt; Project Center &gt; All Projects</p>
-
-        <!-- Summary boxes -->
-        <table class="summary-boxes" cellpadding="4" cellspacing="0">
-          <tr>
-            <td class="summary-box">
-              <div class="summary-label">Total Projects</div>
-              <div class="summary-value">8</div>
-            </td>
-            <td class="summary-box">
-              <div class="summary-label">On Track</div>
-              <div class="summary-value summary-green">5</div>
-            </td>
-            <td class="summary-box">
-              <div class="summary-label">At Risk</div>
-              <div class="summary-value summary-amber">2</div>
-            </td>
-            <td class="summary-box">
-              <div class="summary-label">Critical</div>
-              <div class="summary-value summary-red">1</div>
-            </td>
-            <td class="summary-box">
-              <div class="summary-label">Budget Used</div>
-              <div class="summary-value">67%</div>
-            </td>
-          </tr>
-        </table>
-
-        <!-- Main project table -->
-        <table class="data-table" cellpadding="2" cellspacing="0">
-          <thead>
-            <tr>
-              <th class="col-check"><input type="checkbox"></th>
-              <th class="col-indicator">&nbsp;</th>
-              <th><a href="#">Project Name &#9660;</a></th>
-              <th><a href="#">Owner</a></th>
-              <th><a href="#">Start Date</a></th>
-              <th><a href="#">Finish Date</a></th>
-              <th><a href="#">% Complete</a></th>
-              <th><a href="#">Status</a></th>
-              <th><a href="#">Budget</a></th>
-              <th>Gantt</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="row-even">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator green"></span></td>
-              <td><a href="#" class="project-link">Q1 2026 Platform Modernization</a></td>
-              <td>E. Wiberg</td>
-              <td>01/06/2026</td>
-              <td>03/28/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill" style="width:72%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">72%</span>
-              </td>
-              <td><span class="status-on-track">On Track</span></td>
-              <td class="col-budget">$245,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-green" style="margin-left:10%;width:62%"></div></td>
-            </tr>
-            <tr class="row-odd">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator green"></span></td>
-              <td><a href="#" class="project-link">API Gateway Migration</a></td>
-              <td>K. Jensen</td>
-              <td>01/13/2026</td>
-              <td>02/28/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill" style="width:100%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">100%</span>
-              </td>
-              <td><span class="status-on-track">Complete</span></td>
-              <td class="col-budget">$89,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-blue" style="margin-left:15%;width:35%"></div></td>
-            </tr>
-            <tr class="row-even">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator amber"></span></td>
-              <td><a href="#" class="project-link">Customer Portal Redesign</a></td>
-              <td>M. Andersen</td>
-              <td>01/20/2026</td>
-              <td>03/15/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill progress-amber" style="width:45%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">45%</span>
-              </td>
-              <td><span class="status-at-risk">At Risk</span></td>
-              <td class="col-budget">$178,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-amber" style="margin-left:20%;width:45%"></div></td>
-            </tr>
-            <tr class="row-odd">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator green"></span></td>
-              <td><a href="#" class="project-link">Data Warehouse ETL Pipeline</a></td>
-              <td>S. Larsen</td>
-              <td>02/03/2026</td>
-              <td>04/10/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill" style="width:30%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">30%</span>
-              </td>
-              <td><span class="status-on-track">On Track</span></td>
-              <td class="col-budget">$156,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-green" style="margin-left:30%;width:50%"></div></td>
-            </tr>
-            <tr class="row-even">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator red"></span></td>
-              <td><a href="#" class="project-link">Legacy CRM Data Migration</a></td>
-              <td>P. Nielsen</td>
-              <td>12/01/2025</td>
-              <td>02/14/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill progress-red" style="width:58%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">58%</span>
-              </td>
-              <td><span class="status-critical">OVERDUE</span></td>
-              <td class="col-budget">$320,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-red" style="margin-left:0%;width:55%"></div></td>
-            </tr>
-            <tr class="row-odd">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator green"></span></td>
-              <td><a href="#" class="project-link">CI/CD Pipeline Overhaul</a></td>
-              <td>T. Holm</td>
-              <td>01/27/2026</td>
-              <td>03/06/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill" style="width:88%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">88%</span>
-              </td>
-              <td><span class="status-on-track">On Track</span></td>
-              <td class="col-budget">$67,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-green" style="margin-left:22%;width:30%"></div></td>
-            </tr>
-            <tr class="row-even">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator amber"></span></td>
-              <td><a href="#" class="project-link">Mobile App v3.0</a></td>
-              <td>L. Poulsen</td>
-              <td>02/10/2026</td>
-              <td>05/22/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill progress-amber" style="width:15%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">15%</span>
-              </td>
-              <td><span class="status-at-risk">At Risk</span></td>
-              <td class="col-budget">$410,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-amber" style="margin-left:35%;width:60%"></div></td>
-            </tr>
-            <tr class="row-odd">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator green"></span></td>
-              <td><a href="#" class="project-link">Security Audit &amp; Compliance</a></td>
-              <td>A. Krogh</td>
-              <td>01/06/2026</td>
-              <td>02/21/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill" style="width:95%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">95%</span>
-              </td>
-              <td><span class="status-on-track">On Track</span></td>
-              <td class="col-budget">$52,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-blue" style="margin-left:10%;width:35%"></div></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="table-footer">
-          <span>Showing 1 - 8 of 8 projects</span>
-          <span class="paging">[&lt;&lt; First] [&lt; Prev] <b>1</b> [Next &gt;] [Last &gt;&gt;]</span>
-        </div>
-
-        <!-- Resource allocation section -->
-        <h3 class="section-title">
-          <img src="chart.gif" alt="" class="icon-small"> Resource Allocation Summary
-        </h3>
-        <table class="data-table resource-table" cellpadding="2" cellspacing="0">
-          <thead>
-            <tr>
-              <th>Resource</th>
-              <th>Department</th>
-              <th>Allocated Hours</th>
-              <th>Available Hours</th>
-              <th>Utilization</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="row-even">
-              <td>E. Wiberg</td>
-              <td>Engineering</td>
-              <td>148</td>
-              <td>160</td>
-              <td><span class="util-high">93%</span></td>
-            </tr>
-            <tr class="row-odd">
-              <td>K. Jensen</td>
-              <td>Engineering</td>
-              <td>120</td>
-              <td>160</td>
-              <td><span class="util-med">75%</span></td>
-            </tr>
-            <tr class="row-even">
-              <td>M. Andersen</td>
-              <td>Design</td>
-              <td>155</td>
-              <td>160</td>
-              <td><span class="util-over">97%</span></td>
-            </tr>
-            <tr class="row-odd">
-              <td>S. Larsen</td>
-              <td>Data</td>
-              <td>136</td>
-              <td>160</td>
-              <td><span class="util-high">85%</span></td>
-            </tr>
-            <tr class="row-even">
-              <td>P. Nielsen</td>
-              <td>Engineering</td>
-              <td>160</td>
-              <td>160</td>
-              <td><span class="util-over">100%</span></td>
-            </tr>
-            <tr class="row-odd">
-              <td>T. Holm</td>
-              <td>DevOps</td>
-              <td>112</td>
-              <td>160</td>
-              <td><span class="util-med">70%</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- Footer -->
-        <div class="page-footer">
-          <hr>
-          <table width="100%"><tr>
-            <td>Microsoft Office Project Server 2005 &copy; Microsoft Corporation. All rights reserved.</td>
-            <td align="right"><a href="#">Privacy Statement</a> | <a href="#">Terms of Use</a> | <a href="#">Contact Admin</a></td>
-          </tr></table>
-        </div>
-      </td>
-    </tr>
-  </table>
 </body>
 </html>

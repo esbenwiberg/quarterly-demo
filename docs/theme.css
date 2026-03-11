@@ -1,0 +1,94 @@
+/* ================================================================
+   THEME CONFIGURATION
+   ================================================================
+   All visual theming is controlled by these CSS custom properties.
+   To change the look-and-feel, modify the values below.
+   Every color, font, spacing, and radius in the app references
+   these variables, so changes here cascade everywhere.
+   ================================================================ */
+
+:root {
+  /* -- Brand Colors ------------------------------------------- */
+  --color-primary:          #1a5276;
+  --color-primary-light:    #2980b9;
+  --color-primary-dark:     #0e3d5c;
+  --color-accent:           #f39c12;
+  --color-accent-light:     #f7b731;
+
+  /* -- Status Colors ------------------------------------------ */
+  --color-success:          #27ae60;
+  --color-success-bg:       #d5f5e3;
+  --color-success-border:   #a9dfbf;
+  --color-success-text:     #1e8449;
+
+  --color-warning:          #f39c12;
+  --color-warning-bg:       #fef9e7;
+  --color-warning-border:   #f9e79f;
+  --color-warning-text:     #9a7d0a;
+
+  --color-danger:           #e74c3c;
+  --color-danger-bg:        #fdedec;
+  --color-danger-border:    #f5b7b1;
+  --color-danger-text:      #922b21;
+
+  --color-info:             #3498db;
+  --color-info-bg:          #d6eaf8;
+  --color-info-border:      #aed6f1;
+  --color-info-text:        #1a5276;
+
+  /* -- Neutral Colors ----------------------------------------- */
+  --color-bg:               #f0f2f5;
+  --color-surface:          #ffffff;
+  --color-surface-alt:      #f8f9fa;
+  --color-border:           #dee2e6;
+  --color-border-light:     #e9ecef;
+  --color-text:             #2c3e50;
+  --color-text-secondary:   #6c757d;
+  --color-text-muted:       #adb5bd;
+
+  /* -- Header ------------------------------------------------- */
+  --header-bg:              var(--color-primary);
+  --header-text:            #ffffff;
+  --header-accent:          var(--color-accent);
+
+  /* -- Sidebar ------------------------------------------------ */
+  --sidebar-bg:             #2c3e50;
+  --sidebar-text:           #bdc3c7;
+  --sidebar-active-bg:      var(--color-primary);
+  --sidebar-active-text:    #ffffff;
+  --sidebar-hover-bg:       #34495e;
+  --sidebar-width:          220px;
+
+  /* -- Typography --------------------------------------------- */
+  --font-family:            'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-family-mono:       'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  --font-size-xs:           0.75rem;
+  --font-size-sm:           0.8125rem;
+  --font-size-base:         0.875rem;
+  --font-size-lg:           1rem;
+  --font-size-xl:           1.25rem;
+  --font-size-2xl:          1.5rem;
+  --font-size-3xl:          2rem;
+
+  /* -- Spacing ------------------------------------------------ */
+  --space-xs:               0.25rem;
+  --space-sm:               0.5rem;
+  --space-md:               1rem;
+  --space-lg:               1.5rem;
+  --space-xl:               2rem;
+
+  /* -- Borders and Radii -------------------------------------- */
+  --radius-sm:              4px;
+  --radius-md:              8px;
+  --radius-lg:              12px;
+  --radius-full:            9999px;
+
+  /* -- Shadows ------------------------------------------------ */
+  --shadow-sm:              0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md:              0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg:              0 4px 16px rgba(0, 0, 0, 0.12);
+
+  /* -- Transitions -------------------------------------------- */
+  --transition-fast:        150ms ease;
+  --transition-base:        250ms ease;
+}
