@@ -422,3 +422,55 @@ a:hover {
 .page-footer a:hover {
   color: var(--color-text-secondary);
 }
+
+/* ================================================================
+   RESPONSIVE — TABLET (≤ 768px)
+   ================================================================ */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .main {
+    padding: var(--space-md);
+  }
+}
+
+/* ================================================================
+   RESPONSIVE — MOBILE (≤ 576px)
+   ================================================================ */
+@media (max-width: 576px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .header-subtitle {
+    display: none;
+  }
+
+  .page-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .card-header {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .page-footer {
+    flex-direction: column;
+    gap: var(--space-xs);
+    text-align: center;
+  }
+}
