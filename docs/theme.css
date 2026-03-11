@@ -9,54 +9,54 @@
 
 :root {
   /* -- Brand Colors ------------------------------------------- */
-  --color-primary:          #1a5276;
-  --color-primary-light:    #2980b9;
-  --color-primary-dark:     #0e3d5c;
-  --color-accent:           #f39c12;
+  --color-primary:          #3a8fd1;
+  --color-primary-light:    #5ba8e0;
+  --color-primary-dark:     #2272b5;
+  --color-accent:           #f5a623;
   --color-accent-light:     #f7b731;
 
   /* -- Status Colors ------------------------------------------ */
-  --color-success:          #27ae60;
-  --color-success-bg:       #d5f5e3;
-  --color-success-border:   #a9dfbf;
-  --color-success-text:     #1e8449;
+  --color-success:          #4caf7d;
+  --color-success-bg:       #1a3a28;
+  --color-success-border:   #2a5c3f;
+  --color-success-text:     #6fcf97;
 
-  --color-warning:          #f39c12;
-  --color-warning-bg:       #fef9e7;
-  --color-warning-border:   #f9e79f;
-  --color-warning-text:     #9a7d0a;
+  --color-warning:          #f5a623;
+  --color-warning-bg:       #3a2e10;
+  --color-warning-border:   #5a4820;
+  --color-warning-text:     #f7c948;
 
-  --color-danger:           #e74c3c;
-  --color-danger-bg:        #fdedec;
-  --color-danger-border:    #f5b7b1;
-  --color-danger-text:      #922b21;
+  --color-danger:           #e05c6a;
+  --color-danger-bg:        #3a1820;
+  --color-danger-border:    #5c2830;
+  --color-danger-text:      #f28b96;
 
-  --color-info:             #3498db;
-  --color-info-bg:          #d6eaf8;
-  --color-info-border:      #aed6f1;
-  --color-info-text:        #1a5276;
+  --color-info:             #29b6d0;
+  --color-info-bg:          #0d2f38;
+  --color-info-border:      #1a4a58;
+  --color-info-text:        #56d0e8;
 
   /* -- Neutral Colors ----------------------------------------- */
-  --color-bg:               #f0f2f5;
-  --color-surface:          #ffffff;
-  --color-surface-alt:      #f8f9fa;
-  --color-border:           #dee2e6;
-  --color-border-light:     #e9ecef;
-  --color-text:             #2c3e50;
-  --color-text-secondary:   #6c757d;
-  --color-text-muted:       #adb5bd;
+  --color-bg:               #0f1117;
+  --color-surface:          #1a1d27;
+  --color-surface-alt:      #22263a;
+  --color-border:           #2e3347;
+  --color-border-light:     #252840;
+  --color-text:             #e8ecf1;
+  --color-text-secondary:   #9aa3b5;
+  --color-text-muted:       #6b7590;
 
   /* -- Header ------------------------------------------------- */
-  --header-bg:              var(--color-primary);
-  --header-text:            #ffffff;
+  --header-bg:              #12151e;
+  --header-text:            #e8ecf1;
   --header-accent:          var(--color-accent);
 
   /* -- Sidebar ------------------------------------------------ */
-  --sidebar-bg:             #2c3e50;
-  --sidebar-text:           #bdc3c7;
+  --sidebar-bg:             #12151e;
+  --sidebar-text:           #9aa3b5;
   --sidebar-active-bg:      var(--color-primary);
   --sidebar-active-text:    #ffffff;
-  --sidebar-hover-bg:       #34495e;
+  --sidebar-hover-bg:       #1e2235;
   --sidebar-width:          220px;
 
   /* -- Typography --------------------------------------------- */
@@ -84,9 +84,16 @@
   --radius-full:            9999px;
 
   /* -- Shadows ------------------------------------------------ */
-  --shadow-sm:              0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md:              0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-lg:              0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-sm:              0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-md:              0 2px 8px rgba(0, 0, 0, 0.40);
+  --shadow-lg:              0 4px 16px rgba(0, 0, 0, 0.50);
+
+  /* -- Additional Spacing for Components ---------------------- */
+  --space-badge-py:         2px;
+  --space-badge-px:         10px;
+  --size-progress-bar:      8px;
+  --border-avatar-width:    2px;
+  --color-overlay-light:    rgba(255, 255, 255, 0.08);
 
   /* -- Transitions -------------------------------------------- */
   --transition-fast:        150ms ease;
