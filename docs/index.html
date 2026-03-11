@@ -1,361 +1,729 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contoso Ltd - Project Server 2005</title>
+  <title>Contoso Ltd — Project Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            slate: {
+              850: '#0f1829',
+              950: '#060d1a'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <!-- Top bar -->
-  <div class="topbar">
-    <table width="100%" cellpadding="0" cellspacing="0">
-      <tr>
-        <td class="topbar-left">
-          <img src="logo.gif" alt="Contoso" class="logo-img">
-          <span class="topbar-title">Contoso Ltd &mdash; Project Server</span>
-        </td>
-        <td class="topbar-right">
-          Logged in as: <b>CONTOSO\ewiberg</b> | <a href="#">My Settings</a> | <a href="#">Sign Out</a>
-        </td>
-      </tr>
-    </table>
-  </div>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col">
 
-  <!-- Navigation bar -->
-  <div class="navbar">
-    <table cellpadding="0" cellspacing="0">
-      <tr>
-        <td class="nav-item nav-active">Project Center</td>
-        <td class="nav-item">Resource Center</td>
-        <td class="nav-item">Status Reports</td>
-        <td class="nav-item">Documents</td>
-        <td class="nav-item">Issues &amp; Risks</td>
-        <td class="nav-item">Admin</td>
-      </tr>
-    </table>
-  </div>
+  <!-- ╔══════════════════════════════════════════════════════╗ -->
+  <!-- ║  STICKY HEADER                                       ║ -->
+  <!-- ╚══════════════════════════════════════════════════════╝ -->
+  <header id="site-header" class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-700/60 shadow-lg shadow-black/30">
+    <div class="flex items-center justify-between px-4 lg:px-6 h-14">
 
-  <!-- Toolbar -->
-  <div class="toolbar">
-    <table cellpadding="0" cellspacing="0">
-      <tr>
-        <td class="toolbar-btn">[<u>N</u>ew Project]</td>
-        <td class="toolbar-btn">[<u>E</u>dit]</td>
-        <td class="toolbar-btn">[<u>D</u>elete]</td>
-        <td class="toolbar-sep">|</td>
-        <td class="toolbar-btn">[<u>R</u>efresh]</td>
-        <td class="toolbar-btn">[<u>P</u>rint View]</td>
-        <td class="toolbar-sep">|</td>
-        <td class="toolbar-btn">[Export to <u>E</u>xcel]</td>
-        <td class="toolbar-btn">[<u>F</u>ilter: All Projects &#9660;]</td>
-      </tr>
-    </table>
-  </div>
+      <!-- Logo + Brand -->
+      <div class="flex items-center gap-3">
+        <!-- Hamburger (mobile) -->
+        <button id="sidebar-toggle"
+          class="lg:hidden p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 transition-colors duration-150"
+          aria-label="Toggle sidebar">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
 
-  <!-- Main content area -->
-  <table class="main-layout" cellpadding="0" cellspacing="0">
-    <tr>
-      <!-- Sidebar -->
-      <td class="sidebar">
-        <div class="sidebar-header">Quick Launch</div>
-        <div class="sidebar-section">
-          <div class="sidebar-section-title">Views</div>
-          <a href="#" class="sidebar-link">&#9658; Summary</a>
-          <a href="#" class="sidebar-link">&#9658; Gantt Chart</a>
-          <a href="#" class="sidebar-link">&#9658; Resource Usage</a>
-          <a href="#" class="sidebar-link">&#9658; Cost Tracking</a>
+        <!-- Brand mark -->
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center flex-shrink-0">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h3l2 3H3V7zm0 0v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-7L10 4H5a2 2 0 00-2 3z"/>
+            </svg>
+          </div>
+          <span class="font-semibold text-white text-sm tracking-wide">Contoso <span class="text-indigo-400">Projects</span></span>
         </div>
-        <div class="sidebar-section">
-          <div class="sidebar-section-title">My Work</div>
-          <a href="#" class="sidebar-link">&#9658; My Tasks</a>
-          <a href="#" class="sidebar-link">&#9658; My Timesheets</a>
-          <a href="#" class="sidebar-link">&#9658; Status Reports</a>
-        </div>
-        <div class="sidebar-section">
-          <div class="sidebar-section-title">Reports</div>
-          <a href="#" class="sidebar-link">&#9658; Dashboard</a>
-          <a href="#" class="sidebar-link">&#9658; Portfolio Analysis</a>
-          <a href="#" class="sidebar-link">&#9658; Resource Availability</a>
-        </div>
-        <hr class="sidebar-hr">
-        <div class="sidebar-footer">
-          <img src="recycle.gif" alt="" class="icon-tiny"> <a href="#">Recycle Bin</a>
-        </div>
-      </td>
+      </div>
 
-      <!-- Content -->
-      <td class="content">
-        <h2 class="page-title">
-          <img src="folder.gif" alt="" class="icon-small"> Project Center &mdash; All Projects
-        </h2>
-        <p class="breadcrumb">Home &gt; Project Center &gt; All Projects</p>
+      <!-- Top nav tabs (hidden on mobile) -->
+      <nav class="hidden md:flex items-center gap-1" role="navigation" aria-label="Main navigation">
+        <a href="#" class="nav-tab nav-tab-active" data-nav="project-center">Project Center</a>
+        <a href="#" class="nav-tab">Resource Center</a>
+        <a href="#" class="nav-tab">Status Reports</a>
+        <a href="#" class="nav-tab">Documents</a>
+        <a href="#" class="nav-tab">Issues &amp; Risks</a>
+        <a href="#" class="nav-tab">Admin</a>
+      </nav>
 
-        <!-- Summary boxes -->
-        <table class="summary-boxes" cellpadding="4" cellspacing="0">
-          <tr>
-            <td class="summary-box">
-              <div class="summary-label">Total Projects</div>
-              <div class="summary-value">8</div>
-            </td>
-            <td class="summary-box">
-              <div class="summary-label">On Track</div>
-              <div class="summary-value summary-green">5</div>
-            </td>
-            <td class="summary-box">
-              <div class="summary-label">At Risk</div>
-              <div class="summary-value summary-amber">2</div>
-            </td>
-            <td class="summary-box">
-              <div class="summary-label">Critical</div>
-              <div class="summary-value summary-red">1</div>
-            </td>
-            <td class="summary-box">
-              <div class="summary-label">Budget Used</div>
-              <div class="summary-value">67%</div>
-            </td>
-          </tr>
-        </table>
+      <!-- User area -->
+      <div class="flex items-center gap-3">
+        <!-- Notification bell -->
+        <button class="relative p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 transition-colors duration-150" aria-label="Notifications">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+          </svg>
+          <span class="absolute top-1 right-1 w-2 h-2 bg-indigo-500 rounded-full"></span>
+        </button>
 
-        <!-- Main project table -->
-        <table class="data-table" cellpadding="2" cellspacing="0">
-          <thead>
-            <tr>
-              <th class="col-check"><input type="checkbox"></th>
-              <th class="col-indicator">&nbsp;</th>
-              <th><a href="#">Project Name &#9660;</a></th>
-              <th><a href="#">Owner</a></th>
-              <th><a href="#">Start Date</a></th>
-              <th><a href="#">Finish Date</a></th>
-              <th><a href="#">% Complete</a></th>
-              <th><a href="#">Status</a></th>
-              <th><a href="#">Budget</a></th>
-              <th>Gantt</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="row-even">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator green"></span></td>
-              <td><a href="#" class="project-link">Q1 2026 Platform Modernization</a></td>
-              <td>E. Wiberg</td>
-              <td>01/06/2026</td>
-              <td>03/28/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill" style="width:72%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">72%</span>
-              </td>
-              <td><span class="status-on-track">On Track</span></td>
-              <td class="col-budget">$245,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-green" style="margin-left:10%;width:62%"></div></td>
-            </tr>
-            <tr class="row-odd">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator green"></span></td>
-              <td><a href="#" class="project-link">API Gateway Migration</a></td>
-              <td>K. Jensen</td>
-              <td>01/13/2026</td>
-              <td>02/28/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill" style="width:100%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">100%</span>
-              </td>
-              <td><span class="status-on-track">Complete</span></td>
-              <td class="col-budget">$89,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-blue" style="margin-left:15%;width:35%"></div></td>
-            </tr>
-            <tr class="row-even">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator amber"></span></td>
-              <td><a href="#" class="project-link">Customer Portal Redesign</a></td>
-              <td>M. Andersen</td>
-              <td>01/20/2026</td>
-              <td>03/15/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill progress-amber" style="width:45%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">45%</span>
-              </td>
-              <td><span class="status-at-risk">At Risk</span></td>
-              <td class="col-budget">$178,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-amber" style="margin-left:20%;width:45%"></div></td>
-            </tr>
-            <tr class="row-odd">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator green"></span></td>
-              <td><a href="#" class="project-link">Data Warehouse ETL Pipeline</a></td>
-              <td>S. Larsen</td>
-              <td>02/03/2026</td>
-              <td>04/10/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill" style="width:30%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">30%</span>
-              </td>
-              <td><span class="status-on-track">On Track</span></td>
-              <td class="col-budget">$156,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-green" style="margin-left:30%;width:50%"></div></td>
-            </tr>
-            <tr class="row-even">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator red"></span></td>
-              <td><a href="#" class="project-link">Legacy CRM Data Migration</a></td>
-              <td>P. Nielsen</td>
-              <td>12/01/2025</td>
-              <td>02/14/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill progress-red" style="width:58%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">58%</span>
-              </td>
-              <td><span class="status-critical">OVERDUE</span></td>
-              <td class="col-budget">$320,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-red" style="margin-left:0%;width:55%"></div></td>
-            </tr>
-            <tr class="row-odd">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator green"></span></td>
-              <td><a href="#" class="project-link">CI/CD Pipeline Overhaul</a></td>
-              <td>T. Holm</td>
-              <td>01/27/2026</td>
-              <td>03/06/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill" style="width:88%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">88%</span>
-              </td>
-              <td><span class="status-on-track">On Track</span></td>
-              <td class="col-budget">$67,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-green" style="margin-left:22%;width:30%"></div></td>
-            </tr>
-            <tr class="row-even">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator amber"></span></td>
-              <td><a href="#" class="project-link">Mobile App v3.0</a></td>
-              <td>L. Poulsen</td>
-              <td>02/10/2026</td>
-              <td>05/22/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill progress-amber" style="width:15%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">15%</span>
-              </td>
-              <td><span class="status-at-risk">At Risk</span></td>
-              <td class="col-budget">$410,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-amber" style="margin-left:35%;width:60%"></div></td>
-            </tr>
-            <tr class="row-odd">
-              <td class="col-check"><input type="checkbox"></td>
-              <td class="col-indicator"><span class="indicator green"></span></td>
-              <td><a href="#" class="project-link">Security Audit &amp; Compliance</a></td>
-              <td>A. Krogh</td>
-              <td>01/06/2026</td>
-              <td>02/21/2026</td>
-              <td>
-                <table class="progress-bar" cellpadding="0" cellspacing="0"><tr>
-                  <td class="progress-fill" style="width:95%"></td>
-                  <td class="progress-empty"></td>
-                </tr></table>
-                <span class="progress-text">95%</span>
-              </td>
-              <td><span class="status-on-track">On Track</span></td>
-              <td class="col-budget">$52,000</td>
-              <td class="col-gantt"><div class="gantt-bar gantt-blue" style="margin-left:10%;width:35%"></div></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="table-footer">
-          <span>Showing 1 - 8 of 8 projects</span>
-          <span class="paging">[&lt;&lt; First] [&lt; Prev] <b>1</b> [Next &gt;] [Last &gt;&gt;]</span>
+        <!-- User avatar -->
+        <div class="flex items-center gap-2 cursor-pointer group">
+          <div class="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-xs font-bold text-white select-none">EW</div>
+          <div class="hidden sm:block">
+            <p class="text-xs font-medium text-white leading-none">E. Wiberg</p>
+            <p class="text-xs text-slate-400 leading-none mt-0.5">CONTOSO\ewiberg</p>
+          </div>
+          <svg class="hidden sm:block w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors duration-150" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
         </div>
 
-        <!-- Resource allocation section -->
-        <h3 class="section-title">
-          <img src="chart.gif" alt="" class="icon-small"> Resource Allocation Summary
-        </h3>
-        <table class="data-table resource-table" cellpadding="2" cellspacing="0">
-          <thead>
-            <tr>
-              <th>Resource</th>
-              <th>Department</th>
-              <th>Allocated Hours</th>
-              <th>Available Hours</th>
-              <th>Utilization</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="row-even">
-              <td>E. Wiberg</td>
-              <td>Engineering</td>
-              <td>148</td>
-              <td>160</td>
-              <td><span class="util-high">93%</span></td>
-            </tr>
-            <tr class="row-odd">
-              <td>K. Jensen</td>
-              <td>Engineering</td>
-              <td>120</td>
-              <td>160</td>
-              <td><span class="util-med">75%</span></td>
-            </tr>
-            <tr class="row-even">
-              <td>M. Andersen</td>
-              <td>Design</td>
-              <td>155</td>
-              <td>160</td>
-              <td><span class="util-over">97%</span></td>
-            </tr>
-            <tr class="row-odd">
-              <td>S. Larsen</td>
-              <td>Data</td>
-              <td>136</td>
-              <td>160</td>
-              <td><span class="util-high">85%</span></td>
-            </tr>
-            <tr class="row-even">
-              <td>P. Nielsen</td>
-              <td>Engineering</td>
-              <td>160</td>
-              <td>160</td>
-              <td><span class="util-over">100%</span></td>
-            </tr>
-            <tr class="row-odd">
-              <td>T. Holm</td>
-              <td>DevOps</td>
-              <td>112</td>
-              <td>160</td>
-              <td><span class="util-med">70%</span></td>
-            </tr>
-          </tbody>
-        </table>
+        <!-- Sign out link -->
+        <a href="#" class="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors duration-150 px-2 py-1 rounded hover:bg-slate-700">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+          </svg>
+          Sign Out
+        </a>
+      </div>
+    </div>
+  </header>
 
-        <!-- Footer -->
-        <div class="page-footer">
-          <hr>
-          <table width="100%"><tr>
-            <td>Microsoft Office Project Server 2005 &copy; Microsoft Corporation. All rights reserved.</td>
-            <td align="right"><a href="#">Privacy Statement</a> | <a href="#">Terms of Use</a> | <a href="#">Contact Admin</a></td>
-          </tr></table>
+  <!-- ╔══════════════════════════════════════════════════════╗ -->
+  <!-- ║  BODY LAYOUT: sidebar + content                     ║ -->
+  <!-- ╚══════════════════════════════════════════════════════╝ -->
+  <div class="flex flex-1 overflow-hidden relative">
+
+    <!-- ── SIDEBAR ───────────────────────────────────────────── -->
+    <aside id="sidebar"
+      class="sidebar-panel w-56 flex-shrink-0 bg-slate-900 border-r border-slate-700/60 flex flex-col overflow-y-auto
+             fixed inset-y-0 top-14 left-0 z-40 transform -translate-x-full transition-transform duration-200 ease-in-out
+             lg:static lg:translate-x-0 lg:top-auto lg:inset-y-auto lg:z-auto lg:transition-none">
+
+      <div class="px-3 pt-4 pb-6 flex flex-col gap-6 flex-1">
+
+        <!-- Views section -->
+        <div>
+          <p class="sidebar-section-label">Views</p>
+          <nav class="flex flex-col gap-0.5">
+            <a href="#" class="sidebar-link sidebar-link-active" data-sidebar="summary">
+              <svg class="sidebar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h8M4 18h8"/></svg>
+              Summary
+            </a>
+            <a href="#" class="sidebar-link" data-sidebar="gantt">
+              <svg class="sidebar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              Gantt Chart
+            </a>
+            <a href="#" class="sidebar-link" data-sidebar="resource-usage">
+              <svg class="sidebar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+              Resource Usage
+            </a>
+            <a href="#" class="sidebar-link" data-sidebar="cost">
+              <svg class="sidebar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Cost Tracking
+            </a>
+          </nav>
         </div>
-      </td>
-    </tr>
-  </table>
+
+        <!-- My Work section -->
+        <div>
+          <p class="sidebar-section-label">My Work</p>
+          <nav class="flex flex-col gap-0.5">
+            <a href="#" class="sidebar-link" data-sidebar="my-tasks">
+              <svg class="sidebar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+              My Tasks
+            </a>
+            <a href="#" class="sidebar-link" data-sidebar="timesheets">
+              <svg class="sidebar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              My Timesheets
+            </a>
+            <a href="#" class="sidebar-link" data-sidebar="status-reports">
+              <svg class="sidebar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              Status Reports
+            </a>
+          </nav>
+        </div>
+
+        <!-- Reports section -->
+        <div>
+          <p class="sidebar-section-label">Reports</p>
+          <nav class="flex flex-col gap-0.5">
+            <a href="#" class="sidebar-link" data-sidebar="dashboard">
+              <svg class="sidebar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              Dashboard
+            </a>
+            <a href="#" class="sidebar-link" data-sidebar="portfolio">
+              <svg class="sidebar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
+              Portfolio Analysis
+            </a>
+            <a href="#" class="sidebar-link" data-sidebar="resources">
+              <svg class="sidebar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              Resource Availability
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Sidebar footer -->
+      <div class="px-3 py-3 border-t border-slate-700/60">
+        <a href="#" class="sidebar-link text-slate-500 hover:text-slate-300">
+          <svg class="sidebar-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+          Recycle Bin
+        </a>
+      </div>
+    </aside>
+
+    <!-- Sidebar overlay (mobile) -->
+    <div id="sidebar-overlay"
+      class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden"
+      aria-hidden="true"></div>
+
+    <!-- ── MAIN CONTENT ──────────────────────────────────────── -->
+    <main class="flex-1 overflow-y-auto p-4 lg:p-6 min-w-0">
+
+      <!-- Page heading + breadcrumb -->
+      <div class="mb-6 animate-fade-in">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <nav class="flex items-center gap-1.5 text-xs text-slate-500 mb-1.5" aria-label="Breadcrumb">
+              <a href="#" class="hover:text-slate-300 transition-colors duration-150">Home</a>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              <a href="#" class="hover:text-slate-300 transition-colors duration-150">Project Center</a>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              <span class="text-slate-300">All Projects</span>
+            </nav>
+            <h1 class="text-xl font-semibold text-white tracking-tight">Project Center <span class="text-slate-400 font-normal text-base">— All Projects</span></h1>
+          </div>
+
+          <!-- Action toolbar -->
+          <div class="flex items-center flex-wrap gap-2">
+            <button class="toolbar-btn toolbar-btn-primary">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              New Project
+            </button>
+            <button class="toolbar-btn">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+              Edit
+            </button>
+            <button class="toolbar-btn toolbar-btn-danger">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+              Delete
+            </button>
+            <div class="h-4 w-px bg-slate-700 mx-0.5 hidden sm:block"></div>
+            <button class="toolbar-btn">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              Refresh
+            </button>
+            <button class="toolbar-btn">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+              Print View
+            </button>
+            <button class="toolbar-btn">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Export to Excel
+            </button>
+            <button class="toolbar-btn flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+              Filter: All Projects
+              <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════ -->
+      <!-- KPI SUMMARY CARDS                                    -->
+      <!-- ══════════════════════════════════════════════════════ -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-6 animate-fade-in" style="animation-delay:0.05s">
+
+        <!-- Total Projects -->
+        <div class="kpi-card group">
+          <div class="flex items-start justify-between mb-3">
+            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Total Projects</p>
+            <div class="kpi-icon bg-indigo-500/20 text-indigo-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h3l2 3H3V7zm0 0v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-7L10 4H5a2 2 0 00-2 3z"/></svg>
+            </div>
+          </div>
+          <p class="text-3xl font-bold text-white tracking-tight">8</p>
+          <p class="text-xs text-slate-500 mt-1">Active portfolio</p>
+        </div>
+
+        <!-- On Track -->
+        <div class="kpi-card group">
+          <div class="flex items-start justify-between mb-3">
+            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">On Track</p>
+            <div class="kpi-icon bg-emerald-500/20 text-emerald-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+          </div>
+          <p class="text-3xl font-bold text-emerald-400 tracking-tight">5</p>
+          <p class="text-xs text-slate-500 mt-1">62.5% of portfolio</p>
+        </div>
+
+        <!-- At Risk -->
+        <div class="kpi-card group">
+          <div class="flex items-start justify-between mb-3">
+            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">At Risk</p>
+            <div class="kpi-icon bg-amber-500/20 text-amber-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            </div>
+          </div>
+          <p class="text-3xl font-bold text-amber-400 tracking-tight">2</p>
+          <p class="text-xs text-slate-500 mt-1">Needs attention</p>
+        </div>
+
+        <!-- Critical / Overdue -->
+        <div class="kpi-card group">
+          <div class="flex items-start justify-between mb-3">
+            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Critical</p>
+            <div class="kpi-icon bg-red-500/20 text-red-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+          </div>
+          <p class="text-3xl font-bold text-red-400 tracking-tight">1</p>
+          <p class="text-xs text-slate-500 mt-1">Overdue — action needed</p>
+        </div>
+
+        <!-- Budget Used -->
+        <div class="kpi-card group col-span-2 sm:col-span-1">
+          <div class="flex items-start justify-between mb-3">
+            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Budget Used</p>
+            <div class="kpi-icon bg-violet-500/20 text-violet-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+          </div>
+          <p class="text-3xl font-bold text-violet-400 tracking-tight">67%</p>
+          <div class="mt-2 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-violet-500 to-violet-400 rounded-full" style="width: 67%"></div>
+          </div>
+          <p class="text-xs text-slate-500 mt-1">of total allocation</p>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════ -->
+      <!-- PROJECTS TABLE CARD                                  -->
+      <!-- ══════════════════════════════════════════════════════ -->
+      <div class="data-card mb-6 animate-fade-in" style="animation-delay:0.10s">
+        <div class="px-5 py-4 border-b border-slate-700/60 flex items-center justify-between">
+          <h2 class="text-sm font-semibold text-white">All Projects</h2>
+          <span class="text-xs text-slate-500">Showing 1–8 of 8</span>
+        </div>
+
+        <!-- Scrollable table wrapper -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate-700/60">
+                <th class="table-th w-8 text-center">
+                  <input type="checkbox" class="rounded border-slate-600 bg-slate-700 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-slate-900 cursor-pointer">
+                </th>
+                <th class="table-th w-6"></th>
+                <th class="table-th text-left">
+                  <button class="flex items-center gap-1 hover:text-white transition-colors duration-150">
+                    Project Name
+                    <svg class="w-3 h-3 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                  </button>
+                </th>
+                <th class="table-th text-left hidden sm:table-cell">Owner</th>
+                <th class="table-th text-left hidden md:table-cell">Start</th>
+                <th class="table-th text-left hidden md:table-cell">Finish</th>
+                <th class="table-th text-left hidden lg:table-cell">Progress</th>
+                <th class="table-th text-left">Status</th>
+                <th class="table-th text-right hidden sm:table-cell">Budget</th>
+                <th class="table-th text-left hidden xl:table-cell">Gantt</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-700/40">
+
+              <!-- Row 1: Q1 2026 Platform Modernization -->
+              <tr class="table-row">
+                <td class="table-td text-center"><input type="checkbox" class="rounded border-slate-600 bg-slate-700 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-slate-900 cursor-pointer"></td>
+                <td class="table-td"><span class="status-dot status-dot-green"></span></td>
+                <td class="table-td font-medium"><a href="#" class="project-link">Q1 2026 Platform Modernization</a></td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">E. Wiberg</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">01/06/2026</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">03/28/2026</td>
+                <td class="table-td hidden lg:table-cell">
+                  <div class="flex items-center gap-2">
+                    <div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden min-w-16">
+                      <div class="h-full bg-emerald-500 rounded-full" style="width:72%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400 w-8 text-right">72%</span>
+                  </div>
+                </td>
+                <td class="table-td"><span class="status-badge status-badge-green">On Track</span></td>
+                <td class="table-td text-right text-slate-300 hidden sm:table-cell">$245,000</td>
+                <td class="table-td hidden xl:table-cell">
+                  <div class="gantt-track"><div class="gantt-fill bg-emerald-500/70" style="margin-left:10%;width:62%"></div></div>
+                </td>
+              </tr>
+
+              <!-- Row 2: API Gateway Migration -->
+              <tr class="table-row">
+                <td class="table-td text-center"><input type="checkbox" class="rounded border-slate-600 bg-slate-700 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-slate-900 cursor-pointer"></td>
+                <td class="table-td"><span class="status-dot status-dot-indigo"></span></td>
+                <td class="table-td font-medium"><a href="#" class="project-link">API Gateway Migration</a></td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">K. Jensen</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">01/13/2026</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">02/28/2026</td>
+                <td class="table-td hidden lg:table-cell">
+                  <div class="flex items-center gap-2">
+                    <div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden min-w-16">
+                      <div class="h-full bg-indigo-500 rounded-full" style="width:100%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400 w-8 text-right">100%</span>
+                  </div>
+                </td>
+                <td class="table-td"><span class="status-badge status-badge-indigo">Complete</span></td>
+                <td class="table-td text-right text-slate-300 hidden sm:table-cell">$89,000</td>
+                <td class="table-td hidden xl:table-cell">
+                  <div class="gantt-track"><div class="gantt-fill bg-indigo-500/70" style="margin-left:15%;width:35%"></div></div>
+                </td>
+              </tr>
+
+              <!-- Row 3: Customer Portal Redesign -->
+              <tr class="table-row">
+                <td class="table-td text-center"><input type="checkbox" class="rounded border-slate-600 bg-slate-700 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-slate-900 cursor-pointer"></td>
+                <td class="table-td"><span class="status-dot status-dot-amber"></span></td>
+                <td class="table-td font-medium"><a href="#" class="project-link">Customer Portal Redesign</a></td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">M. Andersen</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">01/20/2026</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">03/15/2026</td>
+                <td class="table-td hidden lg:table-cell">
+                  <div class="flex items-center gap-2">
+                    <div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden min-w-16">
+                      <div class="h-full bg-amber-500 rounded-full" style="width:45%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400 w-8 text-right">45%</span>
+                  </div>
+                </td>
+                <td class="table-td"><span class="status-badge status-badge-amber">At Risk</span></td>
+                <td class="table-td text-right text-slate-300 hidden sm:table-cell">$178,000</td>
+                <td class="table-td hidden xl:table-cell">
+                  <div class="gantt-track"><div class="gantt-fill bg-amber-500/70" style="margin-left:20%;width:45%"></div></div>
+                </td>
+              </tr>
+
+              <!-- Row 4: Data Warehouse ETL Pipeline -->
+              <tr class="table-row">
+                <td class="table-td text-center"><input type="checkbox" class="rounded border-slate-600 bg-slate-700 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-slate-900 cursor-pointer"></td>
+                <td class="table-td"><span class="status-dot status-dot-green"></span></td>
+                <td class="table-td font-medium"><a href="#" class="project-link">Data Warehouse ETL Pipeline</a></td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">S. Larsen</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">02/03/2026</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">04/10/2026</td>
+                <td class="table-td hidden lg:table-cell">
+                  <div class="flex items-center gap-2">
+                    <div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden min-w-16">
+                      <div class="h-full bg-emerald-500 rounded-full" style="width:30%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400 w-8 text-right">30%</span>
+                  </div>
+                </td>
+                <td class="table-td"><span class="status-badge status-badge-green">On Track</span></td>
+                <td class="table-td text-right text-slate-300 hidden sm:table-cell">$156,000</td>
+                <td class="table-td hidden xl:table-cell">
+                  <div class="gantt-track"><div class="gantt-fill bg-emerald-500/70" style="margin-left:30%;width:50%"></div></div>
+                </td>
+              </tr>
+
+              <!-- Row 5: Legacy CRM Data Migration (OVERDUE) -->
+              <tr class="table-row">
+                <td class="table-td text-center"><input type="checkbox" class="rounded border-slate-600 bg-slate-700 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-slate-900 cursor-pointer"></td>
+                <td class="table-td"><span class="status-dot status-dot-red status-pulse"></span></td>
+                <td class="table-td font-medium"><a href="#" class="project-link">Legacy CRM Data Migration</a></td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">P. Nielsen</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">12/01/2025</td>
+                <td class="table-td text-red-400 hidden md:table-cell">02/14/2026</td>
+                <td class="table-td hidden lg:table-cell">
+                  <div class="flex items-center gap-2">
+                    <div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden min-w-16">
+                      <div class="h-full bg-red-500 rounded-full" style="width:58%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400 w-8 text-right">58%</span>
+                  </div>
+                </td>
+                <td class="table-td"><span class="status-badge status-badge-red">OVERDUE</span></td>
+                <td class="table-td text-right text-slate-300 hidden sm:table-cell">$320,000</td>
+                <td class="table-td hidden xl:table-cell">
+                  <div class="gantt-track"><div class="gantt-fill bg-red-500/70" style="margin-left:0%;width:55%"></div></div>
+                </td>
+              </tr>
+
+              <!-- Row 6: CI/CD Pipeline Overhaul -->
+              <tr class="table-row">
+                <td class="table-td text-center"><input type="checkbox" class="rounded border-slate-600 bg-slate-700 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-slate-900 cursor-pointer"></td>
+                <td class="table-td"><span class="status-dot status-dot-green"></span></td>
+                <td class="table-td font-medium"><a href="#" class="project-link">CI/CD Pipeline Overhaul</a></td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">T. Holm</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">01/27/2026</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">03/06/2026</td>
+                <td class="table-td hidden lg:table-cell">
+                  <div class="flex items-center gap-2">
+                    <div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden min-w-16">
+                      <div class="h-full bg-emerald-500 rounded-full" style="width:88%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400 w-8 text-right">88%</span>
+                  </div>
+                </td>
+                <td class="table-td"><span class="status-badge status-badge-green">On Track</span></td>
+                <td class="table-td text-right text-slate-300 hidden sm:table-cell">$67,000</td>
+                <td class="table-td hidden xl:table-cell">
+                  <div class="gantt-track"><div class="gantt-fill bg-emerald-500/70" style="margin-left:22%;width:30%"></div></div>
+                </td>
+              </tr>
+
+              <!-- Row 7: Mobile App v3.0 -->
+              <tr class="table-row">
+                <td class="table-td text-center"><input type="checkbox" class="rounded border-slate-600 bg-slate-700 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-slate-900 cursor-pointer"></td>
+                <td class="table-td"><span class="status-dot status-dot-amber"></span></td>
+                <td class="table-td font-medium"><a href="#" class="project-link">Mobile App v3.0</a></td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">L. Poulsen</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">02/10/2026</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">05/22/2026</td>
+                <td class="table-td hidden lg:table-cell">
+                  <div class="flex items-center gap-2">
+                    <div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden min-w-16">
+                      <div class="h-full bg-amber-500 rounded-full" style="width:15%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400 w-8 text-right">15%</span>
+                  </div>
+                </td>
+                <td class="table-td"><span class="status-badge status-badge-amber">At Risk</span></td>
+                <td class="table-td text-right text-slate-300 hidden sm:table-cell">$410,000</td>
+                <td class="table-td hidden xl:table-cell">
+                  <div class="gantt-track"><div class="gantt-fill bg-amber-500/70" style="margin-left:35%;width:60%"></div></div>
+                </td>
+              </tr>
+
+              <!-- Row 8: Security Audit & Compliance -->
+              <tr class="table-row">
+                <td class="table-td text-center"><input type="checkbox" class="rounded border-slate-600 bg-slate-700 text-indigo-500 focus:ring-indigo-500 focus:ring-offset-slate-900 cursor-pointer"></td>
+                <td class="table-td"><span class="status-dot status-dot-green"></span></td>
+                <td class="table-td font-medium"><a href="#" class="project-link">Security Audit &amp; Compliance</a></td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">A. Krogh</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">01/06/2026</td>
+                <td class="table-td text-slate-400 hidden md:table-cell">02/21/2026</td>
+                <td class="table-td hidden lg:table-cell">
+                  <div class="flex items-center gap-2">
+                    <div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden min-w-16">
+                      <div class="h-full bg-emerald-500 rounded-full" style="width:95%"></div>
+                    </div>
+                    <span class="text-xs text-slate-400 w-8 text-right">95%</span>
+                  </div>
+                </td>
+                <td class="table-td"><span class="status-badge status-badge-green">On Track</span></td>
+                <td class="table-td text-right text-slate-300 hidden sm:table-cell">$52,000</td>
+                <td class="table-td hidden xl:table-cell">
+                  <div class="gantt-track"><div class="gantt-fill bg-indigo-500/70" style="margin-left:10%;width:35%"></div></div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table footer / pagination -->
+        <div class="px-5 py-3 border-t border-slate-700/60 flex items-center justify-between text-xs text-slate-500">
+          <span>Showing 1 – 8 of 8 projects</span>
+          <div class="flex items-center gap-1">
+            <button class="px-2 py-1 rounded hover:bg-slate-700 hover:text-white transition-colors duration-150">&laquo; First</button>
+            <button class="px-2 py-1 rounded hover:bg-slate-700 hover:text-white transition-colors duration-150">&lsaquo; Prev</button>
+            <button class="px-2.5 py-1 rounded bg-indigo-600 text-white font-medium">1</button>
+            <button class="px-2 py-1 rounded hover:bg-slate-700 hover:text-white transition-colors duration-150">Next &rsaquo;</button>
+            <button class="px-2 py-1 rounded hover:bg-slate-700 hover:text-white transition-colors duration-150">Last &raquo;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════ -->
+      <!-- RESOURCE ALLOCATION TABLE                            -->
+      <!-- ══════════════════════════════════════════════════════ -->
+      <div class="data-card mb-6 animate-fade-in" style="animation-delay:0.15s">
+        <div class="px-5 py-4 border-b border-slate-700/60 flex items-center gap-2">
+          <svg class="w-4 h-4 text-indigo-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/>
+          </svg>
+          <h2 class="text-sm font-semibold text-white">Resource Allocation Summary</h2>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate-700/60">
+                <th class="table-th text-left">Resource</th>
+                <th class="table-th text-left hidden sm:table-cell">Department</th>
+                <th class="table-th text-right">Allocated Hrs</th>
+                <th class="table-th text-right hidden sm:table-cell">Available Hrs</th>
+                <th class="table-th text-left">Utilization</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-700/40">
+
+              <tr class="table-row">
+                <td class="table-td font-medium text-slate-200">E. Wiberg</td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">Engineering</td>
+                <td class="table-td text-right text-slate-300">148</td>
+                <td class="table-td text-right text-slate-400 hidden sm:table-cell">160</td>
+                <td class="table-td">
+                  <div class="flex items-center gap-2">
+                    <div class="w-20 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                      <div class="h-full bg-amber-500 rounded-full" style="width:93%"></div>
+                    </div>
+                    <span class="util-badge util-badge-high">93%</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="table-row">
+                <td class="table-td font-medium text-slate-200">K. Jensen</td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">Engineering</td>
+                <td class="table-td text-right text-slate-300">120</td>
+                <td class="table-td text-right text-slate-400 hidden sm:table-cell">160</td>
+                <td class="table-td">
+                  <div class="flex items-center gap-2">
+                    <div class="w-20 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                      <div class="h-full bg-emerald-500 rounded-full" style="width:75%"></div>
+                    </div>
+                    <span class="util-badge util-badge-med">75%</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="table-row">
+                <td class="table-td font-medium text-slate-200">M. Andersen</td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">Design</td>
+                <td class="table-td text-right text-slate-300">155</td>
+                <td class="table-td text-right text-slate-400 hidden sm:table-cell">160</td>
+                <td class="table-td">
+                  <div class="flex items-center gap-2">
+                    <div class="w-20 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                      <div class="h-full bg-red-500 rounded-full" style="width:97%"></div>
+                    </div>
+                    <span class="util-badge util-badge-over">97%</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="table-row">
+                <td class="table-td font-medium text-slate-200">S. Larsen</td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">Data</td>
+                <td class="table-td text-right text-slate-300">136</td>
+                <td class="table-td text-right text-slate-400 hidden sm:table-cell">160</td>
+                <td class="table-td">
+                  <div class="flex items-center gap-2">
+                    <div class="w-20 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                      <div class="h-full bg-amber-500 rounded-full" style="width:85%"></div>
+                    </div>
+                    <span class="util-badge util-badge-high">85%</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="table-row">
+                <td class="table-td font-medium text-slate-200">P. Nielsen</td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">Engineering</td>
+                <td class="table-td text-right text-slate-300">160</td>
+                <td class="table-td text-right text-slate-400 hidden sm:table-cell">160</td>
+                <td class="table-td">
+                  <div class="flex items-center gap-2">
+                    <div class="w-20 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                      <div class="h-full bg-red-500 rounded-full" style="width:100%"></div>
+                    </div>
+                    <span class="util-badge util-badge-over">100%</span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="table-row">
+                <td class="table-td font-medium text-slate-200">T. Holm</td>
+                <td class="table-td text-slate-400 hidden sm:table-cell">DevOps</td>
+                <td class="table-td text-right text-slate-300">112</td>
+                <td class="table-td text-right text-slate-400 hidden sm:table-cell">160</td>
+                <td class="table-td">
+                  <div class="flex items-center gap-2">
+                    <div class="w-20 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                      <div class="h-full bg-emerald-500 rounded-full" style="width:70%"></div>
+                    </div>
+                    <span class="util-badge util-badge-med">70%</span>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════ -->
+      <!-- PAGE FOOTER                                          -->
+      <!-- ══════════════════════════════════════════════════════ -->
+      <footer class="border-t border-slate-700/60 pt-4 pb-6 mt-2">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-slate-500">
+          <span>Microsoft Office Project Server 2005 &copy; Microsoft Corporation. All rights reserved.</span>
+          <div class="flex items-center gap-3">
+            <a href="#" class="hover:text-slate-300 transition-colors duration-150">Privacy Statement</a>
+            <span class="text-slate-700">|</span>
+            <a href="#" class="hover:text-slate-300 transition-colors duration-150">Terms of Use</a>
+            <span class="text-slate-700">|</span>
+            <a href="#" class="hover:text-slate-300 transition-colors duration-150">Contact Admin</a>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+  </div><!-- end flex body -->
+
+  <!-- ╔══════════════════════════════════════════════════════╗ -->
+  <!-- ║  MOBILE SIDEBAR TOGGLE SCRIPT                       ║ -->
+  <!-- ╚══════════════════════════════════════════════════════╝ -->
+  <script>
+    (function () {
+      var toggle = document.getElementById('sidebar-toggle');
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('sidebar-overlay');
+
+      function openSidebar() {
+        sidebar.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSidebar() {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          if (sidebar.classList.contains('-translate-x-full')) {
+            openSidebar();
+          } else {
+            closeSidebar();
+          }
+        });
+      }
+
+      if (overlay) {
+        overlay.addEventListener('click', closeSidebar);
+      }
+
+      // Close sidebar on Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { closeSidebar(); }
+      });
+    }());
+  </script>
+
 </body>
 </html>
