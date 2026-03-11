@@ -1,2 +1,9 @@
 build:
   system: npm
+
+preview:
+  type: process
+  start_command: "npx serve docs -l $PORT"
+  port: 3000
+  health_check: "/"
+  startup_timeout: 30
