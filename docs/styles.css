@@ -187,7 +187,7 @@ a:hover {
    ================================================================ */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: var(--space-lg);
   margin-bottom: var(--space-xl);
 }
@@ -421,4 +421,45 @@ a:hover {
 
 .page-footer a:hover {
   color: var(--color-text-secondary);
+}
+
+/* ================================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================================ */
+
+/* Tablet: ≤1024px — collapse stats to 3 columns */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet-small: ≤768px — sidebar hidden, stats 2 columns */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    padding: var(--space-lg);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: ≤576px — single column stack */
+@media (max-width: 576px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main {
+    padding: var(--space-md);
+  }
 }
