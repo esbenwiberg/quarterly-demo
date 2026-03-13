@@ -37,6 +37,7 @@
   --color-info-text:        #7ec4f0;
 
   /* -- Neutral Colors ----------------------------------------- */
+  --color-white:            #ffffff;
   --color-bg:               #0f1117;
   --color-surface:          #1a1d27;
   --color-surface-alt:      #22263a;
@@ -50,13 +51,16 @@
   --header-bg:              #141720;
   --header-text:            #e8eaf0;
   --header-accent:          var(--color-accent);
+  --header-avatar-border:   rgba(255, 255, 255, 0.3);
 
   /* -- Sidebar ------------------------------------------------ */
   --sidebar-bg:             #141720;
   --sidebar-text:           #9aa0b8;
   --sidebar-active-bg:      var(--color-primary-dark);
-  --sidebar-active-text:    #ffffff;
+  --sidebar-active-text:    var(--color-white);
   --sidebar-hover-bg:       #1e2235;
+  --sidebar-hover-text:     #ecf0f1;
+  --sidebar-border:         rgba(0, 0, 0, 0.1);
   --sidebar-width:          220px;
 
   /* -- Typography --------------------------------------------- */
