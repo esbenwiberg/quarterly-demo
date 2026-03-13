@@ -12,26 +12,26 @@
   --color-primary:          #4a9eda;
   --color-primary-light:    #6ab4e8;
   --color-primary-dark:     #2d7ab5;
-  --color-accent:           #f39c12;
-  --color-accent-light:     #f7b731;
+  --color-accent:           #f5a623;
+  --color-accent-light:     #f7c05a;
 
   /* -- Status Colors ------------------------------------------ */
-  --color-success:          #2ecc71;
+  --color-success:          #3dd68c;
   --color-success-bg:       #0d2e1a;
   --color-success-border:   #1a5c34;
-  --color-success-text:     #2ecc71;
+  --color-success-text:     #3dd68c;
 
-  --color-warning:          #f39c12;
+  --color-warning:          #f5a623;
   --color-warning-bg:       #2e1f04;
   --color-warning-border:   #7a4f08;
-  --color-warning-text:     #f5a623;
+  --color-warning-text:     #f7c05a;
 
-  --color-danger:           #e74c3c;
+  --color-danger:           #f06a5d;
   --color-danger-bg:        #2e0d0a;
   --color-danger-border:    #7a1f18;
-  --color-danger-text:      #e74c3c;
+  --color-danger-text:      #f06a5d;
 
-  --color-info:             #3498db;
+  --color-info:             #4a9eda;
   --color-info-bg:          #0a1e2e;
   --color-info-border:      #1a4a6e;
   --color-info-text:        #6ab4e8;
@@ -84,9 +84,9 @@
   --radius-full:            9999px;
 
   /* -- Shadows ------------------------------------------------ */
-  --shadow-sm:              0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md:              0 2px 8px rgba(0, 0, 0, 0.5);
-  --shadow-lg:              0 4px 16px rgba(0, 0, 0, 0.6);
+  --shadow-sm:              0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md:              0 4px 12px rgba(0, 0, 0, 0.6);
+  --shadow-lg:              0 8px 24px rgba(0, 0, 0, 0.7);
 
   /* -- Transitions -------------------------------------------- */
   --transition-fast:        150ms ease;
