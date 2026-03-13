@@ -301,6 +301,11 @@ a:hover {
   border-bottom: none;
 }
 
+/* -- Overdue row highlight ------------------------------------ */
+tr.overdue {
+  border-left: 4px solid var(--color-overdue);
+}
+
 /* -- Column alignment ----------------------------------------- */
 .col-right {
   text-align: right;
