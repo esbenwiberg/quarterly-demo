@@ -9,6 +9,7 @@
 
 :root {
   /* -- Brand Colors ------------------------------------------- */
+  /* Dark mode primary: lighter blue for better visibility on dark backgrounds */
   --color-primary:          #4a9eda;
   --color-primary-light:    #6ab4e8;
   --color-primary-dark:     #2e7ab8;
@@ -37,7 +38,7 @@
   --color-info-text:        #7ec4f0;
 
   /* -- Neutral Colors ----------------------------------------- */
-  --color-white:            #ffffff;
+  --color-white:            #ffffff; /* Used for high-contrast text on active elements */
   --color-bg:               #0f1117;
   --color-surface:          #1a1d27;
   --color-surface-alt:      #22263a;
@@ -51,7 +52,7 @@
   --header-bg:              #141720;
   --header-text:            #e8eaf0;
   --header-accent:          var(--color-accent);
-  --header-avatar-border:   rgba(255, 255, 255, 0.3);
+  --header-avatar-border:   rgba(255, 255, 255, 0.15);
 
   /* -- Sidebar ------------------------------------------------ */
   --sidebar-bg:             #141720;
@@ -60,7 +61,7 @@
   --sidebar-active-text:    var(--color-white);
   --sidebar-hover-bg:       #1e2235;
   --sidebar-hover-text:     #ecf0f1;
-  --sidebar-border:         rgba(0, 0, 0, 0.1);
+  --sidebar-border:         rgba(255, 255, 255, 0.1);
   --sidebar-width:          220px;
 
   /* -- Typography --------------------------------------------- */
